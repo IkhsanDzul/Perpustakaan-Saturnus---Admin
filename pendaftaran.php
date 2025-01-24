@@ -6,17 +6,19 @@ if (!isset($_SESSION['admin'])) {
     exit();
 }
 
+$admin = $_SESSION['admin']; // Ambil nama admin yang sedang login
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nama = $_POST['nama'];
     $kelas = $_POST['kelas'];
     $no_telp = $_POST['no_telp'];
     $jenis_kelamin = $_POST['jenis_kelamin'];
 
-    $query = "INSERT INTO anggota (nama_anggota, kelas, no_telp, jenis_kelamin) 
-    VALUES ('$nama', '$kelas', '$no_telp', '$jenis_kelamin')";
+    $query = "INSERT INTO anggota (nama_anggota, kelas, no_telp, jenis_kelamin, admin_pendaftar) 
+              VALUES ('$nama', '$kelas', '$no_telp', '$jenis_kelamin', '$admin')";
 
     if ($conn->query($query) === TRUE) {
-        echo "<p class='text-success'>Pendaftaran berhasil!</p>";
+        echo "<p class='text-success'>Pendaftaran berhasil! Admin: <strong>$admin</strong></p>";
     } else {
         echo "<p class='text-danger'>Error: " . $conn->error . "</p>";
     }
@@ -41,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body class="py-3">
-    <div class="container ">
+    <div class="container">
         <a href="anggota.php" class="btn btn-outline-secondary">
             <i class="bi bi-arrow-left"></i> Kembali
         </a>
@@ -68,8 +70,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <option value="P">Perempuan</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary" name="daftar" value="daftar" >Daftar</button>
+            <button type="submit" class="btn btn-primary" name="daftar" value="daftar">Daftar</button>
         </form>
+        <p class="mt-3 text-center text-muted mx-auto w-100">Didaftarkan oleh: <strong><?php echo $admin; ?></strong></p>
     </div>
 </body>
 
