@@ -74,6 +74,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .forgot-password:hover {
             text-decoration: underline;
         }
+        .credit-section {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 10px 0;
+        }
     </style>
 </head>
 
@@ -97,6 +105,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="mt-3 forgot-password"><a href="forgot_password.php" class="text-decoration-none">Lupa Password?</a></div>
             </form>
         </div>
+    </div>
+
+    <div class="credit-section">
+        <p class="mb-0">© 2025 Perpustakaan Saturnus. All rights reserved. | Designed by <a href="https://github.com/IkhsanDzul" class="text-decoration-none text-primary">Ikhsan Dzul</a></p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
